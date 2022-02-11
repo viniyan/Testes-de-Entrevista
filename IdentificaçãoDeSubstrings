@@ -2,10 +2,7 @@ def contarString(s1, s2):
     w = s1.find(s2)
     r = str(s2)
     s = '{} {}'.format(s1, s2)
-    #print(s)
-    conta = 0
     while w > -1:
-        conta += 1
         t = s.count(r)
         print(t)
         return t
