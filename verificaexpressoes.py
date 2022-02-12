@@ -30,7 +30,8 @@ def verificaExpressoes(lista):
 
 
         elif '!' in a:
-            if cont == 0:              #não possui . ou ?
+            if cont == 0:    #não possui . ou ?
+                cont += 7
                 d = a.split('!')
                 print(d)
             if cont == 1:              #possuía . e foi criada a lista sem
