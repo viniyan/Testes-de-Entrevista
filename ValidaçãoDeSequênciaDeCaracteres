@@ -1,3 +1,10 @@
+
+#para conferir as strings, existem 3 funções: uma para conferir chaves, uma para conferir colchetes e uma para conferir parênteses. Para que seja feita a conferência, é necessário
+chamar cada função, dando como parâmetro a string desejada.
+
+
+
+
 def conferirChaves(string):
     u = string.count('{') + string.count('}')
     if u % 2 == 0:
