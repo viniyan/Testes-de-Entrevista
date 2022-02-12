@@ -1,0 +1,35 @@
+def conferirChaves(string):
+    u = string.count('{') + string.count('}')
+    if u % 2 == 0:
+        a = string.find('{')
+        b = string.find('}')
+        if a < b:
+            print('True')
+        else:
+            print('False')
+    else:
+        print('False')
+
+def conferirColchetes(string):
+    v = string.count('[') + string.count(']')
+    if v % 2 == 0:
+        a = string.find('[')
+        b = string.find(']')
+        if a < b:
+            print('True')
+        else:
+            print('False')
+    else:
+        print('False')
+
+def conferirParenteses(string):
+    w = string.count('(') + string.count(')')
+    if w % 2 == 0:
+        a = string.find('(')
+        b = string.find(')')
+        if a < b:
+            print('True')
+        else:
+            print('False')
+    else:
+        print('False')
