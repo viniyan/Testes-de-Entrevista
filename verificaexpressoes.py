@@ -53,7 +53,7 @@ def verificaExpressoes(lista):
             if cont == 3:                 #possuía . e ? e foi criada a lista sem
                 g = a.split('!')
                 for i in g:
-                    if i not in b:
+                    if i not in b and not in c:
                         cont += 3
                         b.append('///')
                         b.append(i)
