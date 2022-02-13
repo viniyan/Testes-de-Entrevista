@@ -1,10 +1,4 @@
 
-#para conferir as strings, existem 3 funções: uma para conferir chaves, uma para conferir colchetes e uma para conferir parênteses. Para que seja feita a conferência, é necessário
-chamar cada função, dando como parâmetro a string desejada.
-
-
-
-
 def conferirChaves(string):
     u = string.count('{') + string.count('}')
     if u % 2 == 0:
@@ -40,3 +34,89 @@ def conferirParenteses(string):
             print('False')
     else:
         print('False')
+
+def conferirOrdem(string):
+    w = list(filter(lambda x: '(' and ')' and '{' and '}' in string ))    #primeiro cenário: parênteses e chaves na string
+    x = list(filter(lambda x: '(' and ')' and '[' and ']' in string ))    #segundo cenário: parênteses  e colchetes na string
+    y = list(filter(lambda x: '[' and ']' and '{' and '}' in string ))    #terceiro cenário: colchetes e chaves na string
+    z = list(filter(lambda x: '(' and ')' and '{' and '}' and '(' and '(' in string )) #quarto cenário: todos os caracteres possíveis
+
+    if len(w) > 0:       #verificação do primeiro cenário
+        a = string.find('(')
+        b = string.find(')')
+        c = string.find('{')
+        d = string.find('}')
+        if a < c:
+            if b > d:
+                print('True')
+            else:
+                print('False')
+        if c < a:
+            if d > b:
+                print('True')
+            else:
+                print('False')
+
+    if len(x) > 0:       #verificação do segundo cenário
+        a = string.find('(')
+        b = string.find(')')
+        c = string.find('[')
+        d = string.find(']')
+        if a < c:
+            if b > d:
+                print('True')
+            else:
+                print('False')
+        if c < a:
+            if d > b:
+                print('True')
+            else:
+                print('False')
+
+    if len(y) > 0:      #verificação do terceiro cenário
+        a = string.find('[')
+        b = string.find(']')
+        c = string.find('{')
+        d = string.find('}')
+        if a < c:
+            if b > d:
+                print('True')
+            else:
+                print('False')
+        if c < a:
+            if d > b:
+                print('True')
+            else:
+                print('False')
+
+    if len(z) > 0:            #verificação do quarto cenário
+        a = string.find('(')
+        b = string.find(')')
+        c = string.find('[')
+        d = string.find(']')
+        e = string.find('{')
+        f = string.find('}')
+        if a < c or a < e:              #se começar com ([ ou ({
+            if b > d or b > f:          #se terminar com ]) ou })
+                if c < e and d > f:      #se ([{}])
+                    print('True')
+                if e < c and f > d:      #se ({[]})
+                    print('True')
+            else:
+                print('False')
+        if c < a or c < e:              #se começar com [( ou [{
+            if d > b or d > f:          #se terminar com )] ou }]
+                if a < e and b > f :     #se [({})]
+                    print('True')
+                if e < a and f > b:      #se [{()}]
+                    print('True')
+            else:
+                print('False')
+        if e < a or e < c:              #se começar com {( ou {[
+            if f > b or f > d:          #se terminar com )} ou ]}
+                if a < c and d < b :     #se {([])}
+                    print('True')
+            if c < a and b < d:         #se {[()]}
+                    print('True')
+            else:
+                print('False')
