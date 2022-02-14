@@ -36,10 +36,10 @@ def conferirParenteses(string):
         print('False')
 
 def conferirOrdem(string):
-    w = list(filter(lambda x: '(' and ')' and '{' and '}' in string, x ))    #primeiro cenário: parênteses e chaves na string
-    x = list(filter(lambda x: '(' and ')' and '[' and ']' in string, x ))    #segundo cenário: parênteses  e colchetes na string
-    y = list(filter(lambda x: '[' and ']' and '{' and '}' in string, x ))    #terceiro cenário: colchetes e chaves na string
-    z = list(filter(lambda x: '(' and ')' and '{' and '}' and '(' and '(' in string, x )) #quarto cenário: todos os caracteres possíveis
+    w = list(filter(lambda x: '(' and ')' and '{' and '}' in string, string ))    #primeiro cenário: parênteses e chaves na string
+    x = list(filter(lambda x: '(' and ')' and '[' and ']' in string, string ))    #segundo cenário: parênteses  e colchetes na string
+    y = list(filter(lambda x: '[' and ']' and '{' and '}' in string, string ))    #terceiro cenário: colchetes e chaves na string
+    z = list(filter(lambda x: '(' and ')' and '{' and '}' and '(' and '(' in string, string )) #quarto cenário: todos os caracteres possíveis
 
     if len(w) > 0:       #verificação do primeiro cenário
         a = string.find('(')
