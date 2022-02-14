@@ -1,0 +1,197 @@
+import json
+
+lista = ''' {"x": [{"id": 1, "texto": "Em primeiro lugar, a forma atual de ensino, em que o aluno é obrigado a sentar-se em intervalos determinados pelos superiores, forma os adultos que levam essa forma de produção para o ofício. Logo, baseado no que foi dito, vale citar o filósofo Pitágoras, que explica que é melhor educar bem as crianças do que ter que reeducá-las como adultos. Assim, os maus hábitos adquiridos na infância podem gerar, nos adultos, muitas complicações, já que dentro da sala de aula, a movimentação dos alunos pelo ambiente é repudiada e muitas vezes com consequências. Como consequência, a doutrinação do modelo educacional não atende aos paradigmas de formação de um adulto atento à saúde ocupacional."},
+{ "id": 4, "texto": "Perante os argumentos citados, é alarmante o número de indivíduos que crescem traumatizados, muitas vezes sem tratamento adequado, durante ou após a infância, desenvolvendo uma realidade de mundo inquietante. Por conseguinte, é relevante adicionar que, sendo a cultura - associada às relações e experiências de vida do cidadão - um meio pelo qual se cria a construção da realidade na consciência dos jovens, a realidade que está sendo criada pelas vítimas pode refletir na decadência da sociedade brasileira, em termos de segurança, educação e até cultural."}]}'''
+# textos.json
+
+lista2 = ['a partir do exposto', 'a posteriori', 'a princípio', 'a soma de tais fatores', 'ademais', 'afinal',
+          'ao mesmo tempo', 'assim sendo', 'baseado no que foi dito', 'com os fatos mencionados',
+          'como consequência',
+          'como já foi dito',
+          'contudo',
+          'é relevante adicionar',
+          'é válido analisar, ainda',
+          'em primeira análise',
+          'em segundo lugar',
+          'em seu sentido mais amplo',
+          'entretanto',
+          'faz-se mister',
+          'inicialmente',
+          'nesse sentido',
+          'no entanto',
+          'partindo desse pressuposto',
+          'perante os argumentos citados',
+          'por fim',
+          'por outro lado',
+          'sob outro ponto de vista',
+          'tendo isso em vista',
+          'todavia']
+
+
+# expressoes.txt
+class VerificaExpressoes:
+
+    def __init__(self, lista, lista2):
+        self.lista = lista
+        self.lista2 = lista2
+
+
+    def verificaExpressoes(self, lista):    #transforma json em python object; armazena o id e o texto em variáveis
+        x = json.loads(lista)
+        y = x['x']
+        a = y[1]
+        b = y[0]
+        c = a.values()
+        d = b.values()
+        e = list(c)
+        f = list(d)
+
+        sentenca1 = e[1]
+        sentenca2 = f[1]
+        print(sentenca1)
+        id1 = e[0]
+        id2 = f[0]
+        expressao1 = lista2[0:len(lista2)]
+        expressao2 = lista2[0:len(lista2)]
+
+    def primeiraSentenca(self,sentenca, expressao):
+        x = json.loads(lista)
+        y = x['x']
+        a = y[1]
+        b = y[0]
+        c = a.values()
+        d = b.values()
+        e = list(c)
+        f = list(d)
+
+        sentenca1 = e[1]
+        id1 = e[0]
+        expressao1 = lista2[0:len(lista2)]
+
+
+        for i in expressao1:
+            x = sentenca1.find(i)
+            print(x)
+            if x != -1:
+                # return i
+                express = print(i)
+                return express
+
+
+    def segundaSentenca(self, sentenca, expressao):
+        x = json.loads(lista)
+        y = x['x']
+        a = y[1]
+        b = y[0]
+        c = a.values()
+        d = b.values()
+        e = list(c)
+        f = list(d)
+
+
+        sentenca2 = f[1]
+        id2 = f[0]
+        expressao2 = lista2[0:len(lista2)]
+
+        for i in expressao2:
+            x = sentenca2.find(i)
+            print(x)
+            if x != -1:
+                # return i
+                express = print(i)
+                print(type(express))
+                return express
+                print(type(express))
+
+#expressão1 = 'é relevante adicionar'
+#expressão2 = 'baseado no que foi dito'
+
+class ExpressaoNaSentenca:
+
+    def __init__(self, lista, lista2):
+        self.lista = lista
+        self.lista2 = lista2
+
+
+    def expressaoNaSentenca(self, lista, lista2):
+        x = json.loads(lista)
+        y = x['x']
+        a = y[1]
+        b = y[0]
+        c = a.values()
+        d = b.values()
+        e = list(c)
+        f = list(d)
+
+        sentenca1 = e[1]
+        espacoes = sentenca1.find(' ')   #7 espacos
+        expressao1 = lista2[0:len(lista2)]
+        for i in expressao1:
+            if espacoes < 4:
+                if expressao in sentenca1:
+                    return expressao
+                    print(expressao)    #se a expressão estiver num dos 3 primeiros tokens, printa a expressão. se tiver, copiar do terminal e colocar como argumento da próxima função
+
+        sentenca2 = f[1]
+        espacoes = sentenca2.find(' ')
+        expressao2 = lista2[0:len(lista2)]
+        for i in expressao2:
+            if espacoes < 4:
+                if expressao in sentenca2:
+                    return expressao
+                    print(expressao)    #se a expressão estiver num dos 3 primeiros tokens, printa a expressão. se tiver, copiar do terminal e colocar como argumento da próxima função
+
+
+
+
+
+    def retornaDicionario(self, lista, expressao):
+        lista = ''' {"x": [{"id": 1, "texto": "Em primeiro lugar, a forma atual de ensino, em que o aluno é obrigado a sentar-se em intervalos determinados pelos superiores, forma os adultos que levam essa forma de produção para o ofício. Logo, baseado no que foi dito, vale citar o filósofo Pitágoras, que explica que é melhor educar bem as crianças do que ter que reeducá-las como adultos. Assim, os maus hábitos adquiridos na infância podem gerar, nos adultos, muitas complicações, já que dentro da sala de aula, a movimentação dos alunos pelo ambiente é repudiada e muitas vezes com consequências. Como consequência, a doutrinação do modelo educacional não atende aos paradigmas de formação de um adulto atento à saúde ocupacional."},
+        { "id": 4, "texto": "Perante os argumentos citados, é alarmante o número de indivíduos que crescem traumatizados, muitas vezes sem tratamento adequado, durante ou após a infância, desenvolvendo uma realidade de mundo inquietante. Por conseguinte, é relevante adicionar que, sendo a cultura - associada às relações e experiências de vida do cidadão - um meio pelo qual se cria a construção da realidade na consciência dos jovens, a realidade que está sendo criada pelas vítimas pode refletir na decadência da sociedade brasileira, em termos de segurança, educação e até cultural."}]}'''
+        x = json.loads(lista)
+        y = x['x']
+        a = y[1]
+        b = y[0]
+        c = a.values()
+        d = b.values()
+        e = list(c)
+        f = list(d)
+        g = [{}]
+        id1 = e[0]
+        id2 = f[0]
+
+        json_output1 = y[0]
+        json_output2 = y[1]
+        #print(json_output2)
+        #print(json_output2.get('id'))
+        #print(json_output1)
+        #print(json_output1.get('id'))
+        x1 = json_output1.get('id')
+        x2 = json_output2.get('id')
+        g =[{'id': '{}'.format(x1)}]
+        sentenca1 = e[1]
+        print(sentenca1)
+        sentenca2 = f[1]
+        sent = [{'id': '{x1}', 'sentenças':'{}'.format(x1, sentenca1)}]
+        print(g)
+
+
+
+x = ExpressaoNaSentenca(lista, lista2)
+x.retornaDicionario(lista, '')
+
+
+
+
+
+
+
+
+
+
+
+
+
+#x = VerificaExpressoes(lista, lista2)
+#x.segundaSentenca(lista, lista2)
+#x.primeiraSentenca(lista, lista2)
