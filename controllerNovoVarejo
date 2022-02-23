@@ -1,0 +1,38 @@
+from Models import *
+from Dao import *
+from github import Github
+import pandas as pd
+from flask import jsonify
+from datetime import datetime
+
+access_token = "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"
+g = Github(access_token)
+
+class ControllerFiltro:
+    def filtroNome(self, nome):
+        repos = [_ for _ in g.get_user().get_repos(nome)]
+        for repo in repos:
+            x = str(repo)
+            if nome in x:
+                print(x.replace('Repository(full_name=', ''))
+            else:
+                print('Não há repositórios com esse nome')
+
+#x = ControllerFiltro
+#x.filtroNome(x, nome= 'livro')
+
+    def filtroData(self, dataInicio1, dataTermino1):
+        dataInicio1 = datetime.strptime(dataInicio1, '%d/%m/%Y').date()
+        dataTermino1 = datetime.strptime(dataTermino1, '%d/%m/%Y').date()
+        repos = [_ for _ in g.get_user().get_repos()]
+        for repo in repos:
+            x = repo.created_at
+            y = datetime.date(x)
+            if dataInicio1 < y and dataTermino1 > y:
+                print(repo)
+            elif dataInicio1 > y and dataTermino1 < y:
+                print('Não há repositórios publicados neste período' )
+
+
+#x = ControllerFiltro
+#x.filtroData(x, '01/01/2022', '18/02/2022')
