@@ -1,0 +1,85 @@
+from github import Github
+import pandas as pd
+from flask import jsonify
+from datetime import datetime
+
+access_token = "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"
+
+g = Github(access_token)
+
+repos = [_ for _ in g.get_user().get_repos()]
+for repo in repos:
+    #print(repo.name)  #chegamos no nome de cada repo em str
+    #print(repo.id)                    #retorna o id de cada repo em str
+    #print(repo.language)            #retorna a linguagem de cada repo em str
+    #print(repo.archived)                #retorna True ou False (no caso todos False)
+    #print(type(repo.created_at))               #retorna a data de criacao de cada repo
+    #print(repo.description)                  #retorna a descrição em cada repo em str
+    #print(repo.get_branches())                 #retorna o local na memória para cada repo
+    #print(repo.get_stats_code_frequency())     #retorna uma lista com os lcais na memória
+    #print(repo.get_stats_commit_activity())   #retorna uma lista com os lcais na memória
+    #print(repo.has_issues)     #retorna alguns True outros False
+    #print(repo.last_modified)    #retorna None em todos
+    since = datetime.now()
+    commits = repo.get_commits(since=since)
+    #print(repo.get_commits(since=since))
+    #last = commits[0]
+    print(type(commits))
+
+class Filtro:
+    def __init__(self, filtro):
+        self.filtro = filtro
+
+
+#print('Total public repos: {}'.format(g.get_user().public_repos))
+#print('Total private repos: {}'.format(g.get_user().total_private_repos))
+
+#saída no terminal:
+#[Repository(full_name="viniyan/DeepLearning"), Repository(full_name="viniyan/imobi"), Repository(full_name="viniyan/livro-receitas"), Repository(full_name="viniyan/livro-receitass"), Repository(full_name="viniyan/Testes-de-Entrevista"), Repository(full_name="viniyan/viniyan"), Repository(full_name="viniyan/YEarn")]
+#Total public repos: 5
+#Total private repos: 2
+#Total python repos: <github.PaginatedList.PaginatedList object at 0x0000028768819220>
+
+
+#for repo in g.get_user().get_repos():
+ #   print(repo.name)
+
+#saída no terminal:
+#DeepLearning
+#imobi
+#livro-receitas
+#livro-receitass
+#Testes-de-Entrevista
+#viniyan
+#YEarn
+
+
+
+
+
+#current_user = g.get_user()
+#print(current_user.name)
+#print(current_user.bio)
+
+#repos = g.get_user().get_repos()
+#repo_list = ['YEarn', 'viniyan','DeepLearning', 'Testes-de-Entrevista',
+ #    'imobi', 'livro-receitass', 'livro-receitas']
+#for repo in repos:
+    #print(repo) #retorna os repositórios (1 por linha)
+
+#python_repos = g.search_repositories(query='language: python')
+#for repo in python_repos:
+#    print(repo.name)   #pega todos os repositórios em python do github
+
+#def extract_repo_info():
+ #   df_project = pd.DataFrame()
+
+  #  for repo in repo_list:
+   #     g = Github(access_token)
+
+    #    df_project = df_project.append({
+     #       'Project id': repo.id
+      #  }, ignore_index=True)
+
+
+#extract_repo_info()
