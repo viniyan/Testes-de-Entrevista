@@ -1,0 +1,3 @@
+class Filtro:
+    def __init__(self, filtro):
+        self.filtro = filtro
