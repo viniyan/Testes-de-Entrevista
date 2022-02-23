@@ -1,0 +1,20 @@
+from Models import *
+
+class DaoFiltro:
+    @classmethod
+    def salvar(cls, filtro):
+        with open('filtro.txt', 'a') as arq:
+            arq.writelines(filtro)
+            arq.writelines('\n')
+
+    @classmethod
+    def ler(cls):
+        with open('filtro.txt', 'r') as arq:
+            cls.filtro = arq.readlines()
+
+        print(cls.filtro)
+
+        cat = []
+        for i in cls.filtro:  # referencia a o parametro da classe Categoria da models
+            cat.append(Filtro(i))
+        return cat
