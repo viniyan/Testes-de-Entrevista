@@ -97,8 +97,8 @@ class OrdenarAlfabeticamente:
         nome3 = repo3['name']
         nome4 = repo4['name']
         nome5 = repo5['name']
-        nomes = [nome1.lower(), nome2.lower(), nome3.lower(), nome4.lower(), nome5.lower()]
-        ordenado = sorted(nomes)
+        nomes = [nome1, nome2, nome3, nome4, nome5]
+        ordenado = sorted(nomes, key= str.casefold)
         print(ordenado)
 
 #x = OrdenarAlfabeticamente
