@@ -1,9 +1,52 @@
-<section>
-        <div class="text input form">
-            <form action="{{ url_for('handle_data') }}" method="post">
-                <div class = 'form_title'><u>Submit your text here</u></div><br>
-                <div class = 'text_input'><input type="text" name = 'date'></div>
-                <div class = 'submit_button'><input type="submit" name = 'submit_date'></div>
-            </form>
-        </div>
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Home</title>
+</head>
+<body>
+    <div><h2>Insira uma data de início e uma data de término no formato 'dd/mm/aaaa','dd/mm/aaaa' para a consulta.</h2></div>
+    <div class="text input form">
+        <form action="{{ url_for('handle_data') }}" method="post">
+            <div class = 'form_title'><u>Submit your text here</u></div><br>
+            <div class = 'text_input'><input type="text" name = 'date'></div>
+            <div class = 'submit_button'><input type="submit" name = 'submit_date'></div>
+        </form>
+     </div>
+     <div><h2>Insira o nome do repositório sobre o qual deseja consultar o conteúdo</h2></div>
+     <div class="text input form">
+         <form action="{{ url_for('handle_content') }}" method="post">
+             <div class = 'form_title'><u>Submit your text here</u></div><br>
+              <div class = 'text_input'><input type="text" name = 'content'></div>
+             <div class = 'submit_button'><input type="submit" name = 'submit_date'></div>
+         </form>
+     </div>
+    <div><h2>Estas são as linguagens presentes nos repositórios, e seus respectivos tamanhos em bytes</h2></div>
+    <div class="text input form">
+        <form action="{{ url_for('handle_language') }}" method="post">
+            <div class = 'form title'><u>Submit your text here</u></div><br>
+            <div class = 'text_input'><input type="text" name = 'language'></div>
+            <div class = 'submit_button'><input type="submit" name="language_bytes"></div>
+        </form>
+    </div>
+
+    <div><h2>Estes são os repositórios, ordenados alfabeticamente</h2></div>
+    <div class="text input form">
+        <form action="{{ url_for('handle_alfa') }}" method="post">
+            <div class = 'form title'><u>Submit your text here</u></div><br>
+            <div class = 'text_input'><input type="text" name = 'alfa'></div>
+            <div class = 'submit_button'><input type="submit" name="alfa_ordenated"></div>
+        </form>
+    </div>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
