@@ -40,6 +40,22 @@
         </form>
     </div>
 
+    <div><h2>Digite o nome do repositório sobre o qual deseja consultar o último commit</h2></div>
+    <div class="text input form"></div>
+        <form action="{{ url_for('handle_last') }}" method="post">
+            <div class = 'form_title'><u>Submit your text here</u></div><br>
+            <div class = 'text_input'><input type="text" name = 'last'></div>
+            <div class = 'submit_button'><input type="submit" name="last_commit"></div>
+        </form>
+
+    <div><h2>Digite o nome do repositório que deseja pesquisar</h2></div>
+    <div class="text input form"></div>
+        <form action="{{ url_for('handle_name') }}" method="post">
+            <div class = 'form_title'><u>Submit your text here</u></div><br>
+            <div class = 'text_input'><input type="text" name = 'name'></div>
+            <div class = 'submit_button'><input type="submit" name="name_search"></div>
+        </form>
+
 
 
 
