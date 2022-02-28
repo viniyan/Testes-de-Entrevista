@@ -62,6 +62,7 @@ def handle_content():
     print(type(str(filtroConteudoRepo(projectpath))))
     return str(filtroConteudoRepo(projectpath))
 
+
 class FiltroLinguagem:
     def filtroLinguagem(self):
         base_url = ('https://api.github.com/{}')
@@ -77,13 +78,14 @@ class FiltroLinguagem:
         endpoint = f'{api_base_url}{endpoint_path}'
         r = requests.get(endpoint)
         print(r.text)
+        return r.text
 
 @app.route('/handle_language', methods=['POST'])
 def handle_language():
     projectpath = request.form['language']
     x = FiltroLinguagem
     print(x.filtroLinguagem(x))
-    return str(x.filtroLinguagem(x))
+    return str(x.filtroLinguagem(projectpath))
 
 class OrdenarAlfabeticamente:
     def ordenaAlfa(self):
@@ -116,12 +118,67 @@ class OrdenarAlfabeticamente:
         nomes = [nome1, nome2, nome3, nome4, nome5]
         ordenado = sorted(nomes, key= str.casefold)
         print(ordenado)
+        return ordenado
 
 @app.route('/handle_alfa', methods=['POST'])
 def handle_alfa():
     projectpath = request.form['alfa']
     x = OrdenarAlfabeticamente
-    return str(x.ordenaAlfa(x))
+    return str(x.ordenaAlfa(projectpath))
+
+class UltimoCommit:
+    def achaData(self, repo):
+        base_url = ('https://api.github.com/{}')
+        path = 'users/viniyan'
+        token = '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'
+        headers = {'authorization': 'Bearer {}'.format(token)}
+        response = requests.get(base_url.format(path), headers=headers)  # autenticar o github
+
+        api_base_url = 'https://api.github.com'
+        owner = 'viniyan'
+        repo = repo
+
+        endpoint_path = f'/repos/{owner}/{repo}/commits'
+        endpoint = f'{api_base_url}{endpoint_path}'
+
+        r = requests.get(endpoint)
+        print(r.status_code)
+        x = r.text
+        json_completo = json.loads(x)
+        json_dicts = json_completo[0]
+        dict_values = json_dicts.values()
+        for i in dict_values:
+            if type(i) == dict:
+                x = i.values()
+                for k in x:
+                    if type(k) == dict:
+                        y = list(k.values())
+                        data = y[2]
+                        print(data)
+                        return data
+
+@app.route('/handle_last', methods=['POST'])
+def handle_last():
+    projectpath = request.form['last']
+    x = UltimoCommit
+    return str(x.achaData(x, projectpath))
+
+
+class ControllerFiltro:
+    def filtroNome(self, nome):    #nome do repo
+        repos = [_ for _ in g.get_user().get_repos(nome)]
+        for repo in repos:
+            x = str(repo)
+            if nome in x:
+                print(x.replace('Repository(full_name=', ''))
+            else:
+                print('Não há repositórios com esse nome')
+
+@app.route('/handle_name', methods=['POST'])
+def handle_name():
+    projectpath = request.form['name']
+    x = ControllerFiltro
+    return str(x.filtroNome(x, projectpath))
 
 
 
